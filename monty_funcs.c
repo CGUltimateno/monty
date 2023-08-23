@@ -1,10 +1,5 @@
 #include "monty.h"
 
-void push(stack_t **stack, unsigned int line_number);
-void pull(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
 /**
  * push - Pushes a value to a stack_t linked list.
  * @stack: A pointer to the top mode node of a stack_t linked list.
