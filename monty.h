@@ -72,14 +72,6 @@ void print_push_error(int line_number);
 void print_empty_stack_error(int line_number);
 void print_pint_error(int line_number);
 void print_swap_error(int line_number);
-void print_add_error(int line_number);
-void print_sub_error(int line_number);
-void print_div_error(int line_number);
-void print_div_by_zero_error(int line_number);
-void print_mul_error(int line_number);
-void print_mod_error(int line_number);
-void print_pchar_error(int line_number);
-void print_pchar_stack_empty_error(int line_number);
 /*execute functions*/
 int execute_file(char *file_name);
 void execute_line(char *line, int line_number);
@@ -91,26 +83,17 @@ void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
-void _div(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
-void mod(stack_t **stack, unsigned int line_number);
-void pchar(stack_t **stack, unsigned int line_number);
-void pstr(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
-void queue(stack_t **stack, unsigned int line_number);
-void stack(stack_t **stack, unsigned int line_number);
 
-/*linked list functions*/
-size_t print_stack(const stack_t *h);
-stack_t *add_dnodeint(stack_t **head, const int n);
-void free_stack(stack_t *head);
-void delete_top_node(stack_t **stack);
-stack_t *add_stackint_end(stack_t **head, const int n);
+/**
+* linked list functions
+* size_t print_stack(const stack_t *h);
+* stack_t *add_dnodeint(stack_t **head, const int n);
+* void free_stack(stack_t *head);
+*void delete_top_node(stack_t **stack);
+* stack_t *add_stackint_end(stack_t **head, const int n);
+*/
 
-/*helper*/
 
 void free_everything(void);
 
