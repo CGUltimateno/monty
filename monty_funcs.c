@@ -36,7 +36,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @line_number: Line number of the current operation
  */
 
-void print_push_error(unsigned int line_number)
+void print_push_error( int line_number)
 {
     fprintf(stderr, "L%d: usage: push integer\n", line_number);
     free_everything();
