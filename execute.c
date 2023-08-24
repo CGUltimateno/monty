@@ -9,37 +9,22 @@ int execute_file(char *file_name)
 {
     FILE *file = NULL;
     char *line = NULL;
-    size_t len = 0;
-    unsigned int line_number = 0;
-    char *opcode_instruction = NULL;
-    void (*op_func)(stack_t **, unsigned int);
-    stack_t *stack = NULL;
-    my_data.file_name = file_name;
+    size_t line_length = 0;
+    ssize_t read;
     file = fopen(file_name, "r");
-    if (!file)
+    if (file == NULL)
         print_open_file_error(file_name);
-    while (getline(&line, &len, file) != -1)
+    my_data.file = file;
+    while ((read = getline(&line, &line_length, file)) != -1)
     {
-        line_number++;
-        opcode_instruction = strtok(line, "\n\t\r ");
-        if (!opcode_instruction || opcode_instruction[0] == '#')
-            continue;
-        if (strcmp(opcode_instruction, "push") == 0)
-        {
-            my_data.arg2 = strtok(NULL, "\n\t\r ");
-            push(&stack, line_number);
-        }
-        else
-        {
-            op_func = get_op_func(opcode_instruction);
-            if (!op_func)
-                print_invalid_instruction_error(line_number, opcode_instruction);
-            op_func(&stack, line_number);
-        }
+        my_data.line_number++;
+        my_data.line = line;
+        if (is_empty_line(my_data.line) == 1)
+            execute_line(my_data.line, my_data.line_number);
     }
-    free(line);
+    free_stack(my_data.stack);
     fclose(file);
-    free_stack(stack);
+    free(line);
     return (0);
 }
 /**
