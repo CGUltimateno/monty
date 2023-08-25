@@ -15,13 +15,7 @@ int execute_file(char *file_name)
     if (file == NULL)
         print_open_file_error(file_name);
     my_data.file = file;
-    while ((read = getline(&line, &line_length, file)) != -1)
-    {
-        my_data.line_number++;
-        my_data.line = line;
-        if (is_empty_line(my_data.line) == 1)
-            execute_line(my_data.line, my_data.line_number);
-    }
+
     free_stack(my_data.stack);
     fclose(file);
     free(line);
@@ -42,7 +36,6 @@ int execute_file(char *file_name)
         {"pint", pint},
         {"pop", pop},
         {"swap", swap},
-        {"add", add},
         {"nop", nop},
     };
     my_data.arg1 = strtok(line, " \n");
