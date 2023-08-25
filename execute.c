@@ -37,12 +37,23 @@ int execute_file(char *file_name)
      int i;
      int is_instruction  = -1;
     instruction_t  instructions[] = {
-        {"push", push},
-        {"pall", pall},
-        {"pint", pint},
-        {"pop", pop},
-        {"swap", swap},
-        {"nop", nop},
+            {"push", push},
+            {"pop", pop},
+            {"pall", pall},
+            {"pint", pint},
+            {"swap", swap},
+            {"nop", nop},
+            {"sub", sub},
+            {"div", _div},
+            {"add", add},
+            {"mul", mul},
+            {"mod", mod},
+            {"pchar", pchar},
+            {"pstr", pstr},
+            {"rotl", rotl},
+            {"rotr", rotr},
+            {"stack", stack},
+            {"queue", queue},
     };
     my_data.arg1 = strtok(line, " \n");
     my_data.arg2 = strtok(NULL, " \n");
