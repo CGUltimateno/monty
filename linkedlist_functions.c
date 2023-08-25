@@ -110,8 +110,10 @@ void delete_top_node(stack_t **stack)
     stack_t *current;
 
     if (*stack == NULL)
+    {
+        printf("Error: Stack is empty.\n");
         return;
-
+    }
     current = *stack;
     *stack = (*stack)->next;
     if (*stack != NULL)

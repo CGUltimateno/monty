@@ -35,10 +35,12 @@ void print_pint_error(int line_number)
 void swap(stack_t **stack, unsigned int line_number)
 {
     int tmp;
-    if (!*stack || !(*stack)->next)
+    if (stack == NULL || *stack == NULL)
     {
         print_swap_error(line_number);
     }
+
+
     if ((*stack)->next)
     {
         tmp = (*stack)->n;

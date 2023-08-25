@@ -7,7 +7,7 @@
  */
 int execute_file(char *file_name)
 {
-    FILE *file = NULL;
+    FILE *file;
     char *line = NULL;
     size_t line_length = 0;
     ssize_t read;
@@ -15,7 +15,13 @@ int execute_file(char *file_name)
     if (file == NULL)
         print_open_file_error(file_name);
     my_data.file = file;
-
+    while ((read = getline(&line, &line_length, file)) != -1)
+    {
+        my_data.line_number++;
+        my_data.line = line;
+        if (is_empty_line(my_data.line) == 1)
+            execute_line(my_data.line, my_data.line_number);
+    }
     free_stack(my_data.stack);
     fclose(file);
     free(line);
@@ -29,7 +35,7 @@ int execute_file(char *file_name)
  void execute_line(char *line,  int line_number)
 {
      int i;
-     int is_instruction  = 0;
+     int is_instruction  = -1;
     instruction_t  instructions[] = {
         {"push", push},
         {"pall", pall},

@@ -56,6 +56,6 @@ void pall(stack_t **stack, unsigned int line_number)
 void free_everything(void)
 {
     free_stack(my_data.stack);
-    free(my_data.line);
     fclose(my_data.file);
+    free(my_data.line);
 }
