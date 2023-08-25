@@ -13,6 +13,7 @@ size_t print_stack(const stack_t *h)
         h = h->next;
         i++;
     }
+    return (i);
 }
 /**
  * add_dnodeint - Adds a new node at the beginning of a doubly linked list
